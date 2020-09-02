@@ -4,7 +4,7 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     
-    <title>TEXT | adminLLL</title>
+    <title>java反射机制 | adminLLL</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     
@@ -92,7 +92,7 @@
             <section class="inner">
                 <section class="inner-main">
                     <div class="post">
-    <article id="post-ckel5dfbx0002w8uhyic6ritf" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-ckel5dfbt0001w8uh5jxl3m38" class="article article-type-post" itemscope="" itemprop="blogPost">
 
     <div class="article-inner">
 
@@ -103,7 +103,7 @@
             
   
     <h1 class="article-title" itemprop="name">
-      TEXT
+      java反射机制
     </h1>
   
 
@@ -113,11 +113,15 @@
         <div class="article-more-info article-more-info-post hairline">
 
             <div class="article-date">
-  <time datetime="2018-11-20T14:11:14.000Z" itemprop="datePublished">2018-11-20</time>
+  <time datetime="2020-09-02T08:45:18.000Z" itemprop="datePublished">2020-09-02</time>
 </div>
 
             
 
+            
+            <div class="article-tag">
+                <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
+            </div>
             
 
             
@@ -128,11 +132,30 @@
         </div>
 
         <div class="article-entry post-inner-html hairline" itemprop="articleBody">
-            <p>ZJGSU NB!!!</p>
-<p>324 NB!!!</p>
-<p>LLL LJ!!!</p>
-<p>XD</p>
-
+            <p>看的springboot学习视频，上来就写了不少@的注解编程，作为一个之前基本只认识@override的小白，在网上详细了解注解编程的时候，发现了<strong>反射</strong>这个似曾相识的知识点，之前在做数据库大作业的时候，用到过</p>
+<pre><code>Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);
+</code></pre><p>这么一句代码，当时也不太清楚是什么意思，只是知道大概是导入这个类。</p>
+<p>现在看了一下反射的原理，大概明白了一点。</p>
+<p>一般情况下，我们使用某个类时必定知道它是什么类，是用来做什么的。于是我们直接对这个类进行实例化，之后使用这个类对象进行操作。</p>
+<pre><code>Apple apple = new Apple(); //直接初始化，「正射」
+apple.setPrice(4);
+</code></pre><p>而反射则是一开始并不知道我要初始化的类对象是什么，自然也无法使用 new 关键字来创建对象了。</p>
+<p>这时候，我们使用 JDK 提供的反射 API 进行反射调用：</p>
+<pre><code>Class clz = Class.forName(&quot;com.study.reflect.Apple&quot;);
+Method method = clz.getMethod(&quot;setPrice&quot;, int.class);
+Constructor constructor = clz.getConstructor();
+Object object = constructor.newInstance();
+method.invoke(object, 4);
+</code></pre><p>上面两段代码的执行结果，其实是完全一样的。但是其思路完全不一样，第一段代码在未运行时就已经确定了要运行的类（Apple），而第二段代码则是在运行时通过字符串值才得知要运行的类（com.study.reflect.Apple）。</p>
+<p>所以说什么是反射？</p>
+<p><strong>反射就是在运行时才知道要操作的类是什么，并且可以在运行时获取类的完整构造，并调用对应的方法。</strong></p>
+<p>至于现在学习重点还不在这边，先了解一下原理，以后深入。</p>
+<p>至于</p>
+<pre><code>Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);
+</code></pre><p>我们知道Class.forName() 方法要求JVM查找并加载指定的类到内存中，此时将”com.mysql.jdbc.Driver” 当做参数传入，就是告诉JVM，去”com.mysql.jdbc”这个路径下找Driver类，将其加载到内存中。经过一系列操作<strong>将mysql驱动注册到DriverManager中去</strong></p>
+<p>注册到DriverManager中之后，我们就可以通过DriverManager的getConnection方法获得mysql的连接了：</p>
+<pre><code>Connection conn = DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306/test&quot;, &quot;root&quot;, &quot;123456&quot;);
+</code></pre>
         </div>
 
     </div>
@@ -156,29 +179,25 @@
     
 <nav class="article-nav">
   
-    <a href="/2019/08/31/cp/" id="article-nav-newer" class="article-nav-link-wrap">
-      <div class="article-nav-caption">下一篇</div>
-      <div class="article-nav-title">
-        
-          2019快乐
-        
-      </div>
-    </a>
   
+    <a href="/2020/09/02/s1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-caption">上一篇</div>
+      <div class="article-nav-title">java有关应该用接口类型还是实现类的类类型去引用对象相关</div>
+    </a>
   
 </nav>
 
 
     <section class="share">
         <div class="share-title">分享</div>
-        <a class="share-item" target="_blank" href="https://twitter.com/share?text=TEXT - adminLLL&url=http://yoursite.com/2018/11/20/test/">
+        <a class="share-item" target="_blank" href="https://twitter.com/share?text=java反射机制 - adminLLL&url=http://yoursite.com/2020/09/02/s2/">
             <box-icon type="logo" name="twitter"></box-icon>
         </a>
-        <a class="share-item" target="_blank" href="https://www.facebook.com/sharer.php?title=TEXT - adminLLL&u=http://yoursite.com/2018/11/20/test/">
+        <a class="share-item" target="_blank" href="https://www.facebook.com/sharer.php?title=java反射机制 - adminLLL&u=http://yoursite.com/2020/09/02/s2/">
             <box-icon name="facebook-square" type="logo"></box-icon>
         </a>
         <!-- <a class="share-item" target="_blank"
-            href="https://service.weibo.com/share/share.php?title=TEXT - adminLLL&url=http://yoursite.com/2018/11/20/test/&pic=">
+            href="https://service.weibo.com/share/share.php?title=java反射机制 - adminLLL&url=http://yoursite.com/2020/09/02/s2/&pic=">
             <div class="n-icon n-icon-weibo"></div>
         </a> -->
     </section>
