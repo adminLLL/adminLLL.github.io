@@ -4,7 +4,7 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     
-    <title>TEXT | adminLLL</title>
+    <title>java有关应该用接口类型还是实现类的类类型去引用对象相关 | adminLLL</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     
@@ -92,7 +92,7 @@
             <section class="inner">
                 <section class="inner-main">
                     <div class="post">
-    <article id="post-ckeju0ale000070uhnd0rn95p" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-ckekvovob00000kuh9z0eyrh0" class="article article-type-post" itemscope="" itemprop="blogPost">
 
     <div class="article-inner">
 
@@ -103,7 +103,7 @@
             
   
     <h1 class="article-title" itemprop="name">
-      TEXT
+      java有关应该用接口类型还是实现类的类类型去引用对象相关
     </h1>
   
 
@@ -113,11 +113,15 @@
         <div class="article-more-info article-more-info-post hairline">
 
             <div class="article-date">
-  <time datetime="2018-11-20T14:11:14.000Z" itemprop="datePublished">2018-11-20</time>
+  <time datetime="2020-09-02T04:23:22.000Z" itemprop="datePublished">2020-09-02</time>
 </div>
 
             
 
+            
+            <div class="article-tag">
+                <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
+            </div>
             
 
             
@@ -128,10 +132,45 @@
         </div>
 
         <div class="article-entry post-inner-html hairline" itemprop="articleBody">
-            <p>ZJGSU NB!!!</p>
-<p>324 NB!!!</p>
-<p>LLL LJ!!!</p>
-<p>XD</p>
+            <p>学习spring的时候看到这么一篇文章</p>
+<p><a href="https://zhuanlan.zhihu.com/p/64001753" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/64001753</a></p>
+<p>其中介绍“<strong>开关原则</strong>”时不太明白java接口类型引用对象相关知识，学习相关知识后记录一下。</p>
+<p>我们假设有一个接口A ，和它得实现类B，如下：</p>
+<pre><code>public interface InterA{
+
+    void request();
+}
+
+public class ImplA implements InterA {
+
+    @Override
+    public void request() {
+        System.out.println(&quot;接口中的方法&quot;);
+    }
+
+    public void specile() {
+        System.out.println(&quot;实现类中特殊的方法&quot;);
+    }
+}
+</code></pre><p>测试类：</p>
+<pre><code>public class Test {
+
+    public static void main(String[] args) {
+        /**
+         * 接口类型的引用变量A 去接收对象地址，只能调用接口中的方法
+         */
+        InterA a= new ImplA();
+        a.request();
+
+        /**
+         * 类类型的引用变量A 去接收对象地址，可以调用很多方法
+         */
+        ImplA b = new ImplA();
+        b.request();
+        b.specile();
+    }
+}
+</code></pre><p>注释内容这就是这两种方案引用对象的区别了。</p>
 
         </div>
 
@@ -156,29 +195,25 @@
     
 <nav class="article-nav">
   
-    <a href="/2019/08/31/cp/" id="article-nav-newer" class="article-nav-link-wrap">
-      <div class="article-nav-caption">下一篇</div>
-      <div class="article-nav-title">
-        
-          《共产党宣言》全文
-        
-      </div>
-    </a>
   
+    <a href="/2019/08/31/cp/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-caption">上一篇</div>
+      <div class="article-nav-title">2019快乐</div>
+    </a>
   
 </nav>
 
 
     <section class="share">
         <div class="share-title">分享</div>
-        <a class="share-item" target="_blank" href="https://twitter.com/share?text=TEXT - adminLLL&url=http://yoursite.com/2018/11/20/TEXT/">
+        <a class="share-item" target="_blank" href="https://twitter.com/share?text=java有关应该用接口类型还是实现类的类类型去引用对象相关 - adminLLL&url=http://yoursite.com/2020/09/02/s1/">
             <box-icon type="logo" name="twitter"></box-icon>
         </a>
-        <a class="share-item" target="_blank" href="https://www.facebook.com/sharer.php?title=TEXT - adminLLL&u=http://yoursite.com/2018/11/20/TEXT/">
+        <a class="share-item" target="_blank" href="https://www.facebook.com/sharer.php?title=java有关应该用接口类型还是实现类的类类型去引用对象相关 - adminLLL&u=http://yoursite.com/2020/09/02/s1/">
             <box-icon name="facebook-square" type="logo"></box-icon>
         </a>
         <!-- <a class="share-item" target="_blank"
-            href="https://service.weibo.com/share/share.php?title=TEXT - adminLLL&url=http://yoursite.com/2018/11/20/TEXT/&pic=">
+            href="https://service.weibo.com/share/share.php?title=java有关应该用接口类型还是实现类的类类型去引用对象相关 - adminLLL&url=http://yoursite.com/2020/09/02/s1/&pic=">
             <div class="n-icon n-icon-weibo"></div>
         </a> -->
     </section>
@@ -216,6 +251,13 @@
 
     
       
+  <div class="widget-wrap widget-tags">
+    <div class="widget-title"><span>Tags</span></div>
+    <div class="widget-inner">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
+    </div>
+  </div>
+
 
     
       
@@ -225,11 +267,15 @@
       <ul>
         
           <li>
-            <a href="/2019/08/31/cp/">《共产党宣言》全文</a>
+            <a href="/2020/09/02/s1/">java有关应该用接口类型还是实现类的类类型去引用对象相关</a>
           </li>
         
           <li>
-            <a href="/2018/11/20/TEXT/">TEXT</a>
+            <a href="/2019/08/31/cp/">2019快乐</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/20/test/">TEXT</a>
           </li>
         
       </ul>
@@ -241,7 +287,7 @@
   <div class="widget-wrap widget-archive">
     <div class="widget-title"><span>Archive</span></div>
     <div class="widget-inner">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018</a></li></ul>
     </div>
   </div>
 
