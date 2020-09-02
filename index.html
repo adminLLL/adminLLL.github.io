@@ -107,27 +107,6 @@
         
           <p>看的springboot学习视频，上来就写了不少@的注解编程，作为一个之前基本只认识@override的小白，在网上详细了解注解编程的时候，发现了<strong>反射</strong>这个似曾相识的知识点，之前在做数据库大作业的时候，用到过</p>
 <pre><code>Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);
-</code></pre><p>这么一句代码，当时也不太清楚是什么意思，只是知道大概是导入这个类。</p>
-<p>现在看了一下反射的原理，大概明白了一点。</p>
-<p>一般情况下，我们使用某个类时必定知道它是什么类，是用来做什么的。于是我们直接对这个类进行实例化，之后使用这个类对象进行操作。</p>
-<pre><code>Apple apple = new Apple(); //直接初始化，「正射」
-apple.setPrice(4);
-</code></pre><p>而反射则是一开始并不知道我要初始化的类对象是什么，自然也无法使用 new 关键字来创建对象了。</p>
-<p>这时候，我们使用 JDK 提供的反射 API 进行反射调用：</p>
-<pre><code>Class clz = Class.forName(&quot;com.study.reflect.Apple&quot;);
-Method method = clz.getMethod(&quot;setPrice&quot;, int.class);
-Constructor constructor = clz.getConstructor();
-Object object = constructor.newInstance();
-method.invoke(object, 4);
-</code></pre><p>上面两段代码的执行结果，其实是完全一样的。但是其思路完全不一样，第一段代码在未运行时就已经确定了要运行的类（Apple），而第二段代码则是在运行时通过字符串值才得知要运行的类（com.study.reflect.Apple）。</p>
-<p>所以说什么是反射？</p>
-<p><strong>反射就是在运行时才知道要操作的类是什么，并且可以在运行时获取类的完整构造，并调用对应的方法。</strong></p>
-<p>至于现在学习重点还不在这边，先了解一下原理，以后深入。</p>
-<p>至于</p>
-<pre><code>Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);
-</code></pre><p>我们知道Class.forName() 方法要求JVM查找并加载指定的类到内存中，此时将”com.mysql.jdbc.Driver” 当做参数传入，就是告诉JVM，去”com.mysql.jdbc”这个路径下找Driver类，将其加载到内存中。经过一系列操作<strong>将mysql驱动注册到DriverManager中去</strong></p>
-<p>注册到DriverManager中之后，我们就可以通过DriverManager的getConnection方法获得mysql的连接了：</p>
-<pre><code>Connection conn = DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306/test&quot;, &quot;root&quot;, &quot;123456&quot;);
 </code></pre>
         
       </div>
@@ -168,46 +147,9 @@ method.invoke(object, 4);
         
           <p>学习spring的时候看到这么一篇文章</p>
 <p><a href="https://zhuanlan.zhihu.com/p/64001753" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/64001753</a></p>
-<p>其中介绍“<strong>开关原则</strong>”时不太明白java接口类型引用对象相关知识，学习相关知识后记录一下。</p>
-<p>我们假设有一个接口A ，和它得实现类B，如下：</p>
-<pre><code>public interface InterA{
-
-    void request();
-}
-
-public class ImplA implements InterA {
-
-    @Override
-    public void request() {
-        System.out.println(&quot;接口中的方法&quot;);
-    }
-
-    public void specile() {
-        System.out.println(&quot;实现类中特殊的方法&quot;);
-    }
-}
-</code></pre><p>测试类：</p>
-<pre><code>public class Test {
-
-    public static void main(String[] args) {
-        /**
-         * 接口类型的引用变量A 去接收对象地址，只能调用接口中的方法
-         */
-        InterA a= new ImplA();
-        a.request();
-
-        /**
-         * 类类型的引用变量A 去接收对象地址，可以调用很多方法
-         */
-        ImplA b = new ImplA();
-        b.request();
-        b.specile();
-    }
-}
-</code></pre><p>注释内容这就是这两种方案引用对象的区别了。</p>
-
+<p>其中介绍“<strong>开关原则</strong>”时不太明白java接口类型引用对象相关知识，学习相关知识后记录一下。<br>
         
-      </div>
+      </p></div>
     </div>
 
   </div>
