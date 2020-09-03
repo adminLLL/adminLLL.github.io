@@ -4,7 +4,7 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     
-    <title>TEXT | adminLLL</title>
+    <title>springboot第一个程序及相关注解解释 | adminLLL</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     
@@ -92,7 +92,7 @@
             <section class="inner">
                 <section class="inner-main">
                     <div class="post">
-    <article id="post-ckemrqgfq0006houhxj56w8dp" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-ckemrqgfl0003houhqphptdde" class="article article-type-post" itemscope="" itemprop="blogPost">
 
     <div class="article-inner">
 
@@ -103,7 +103,7 @@
             
   
     <h1 class="article-title" itemprop="name">
-      TEXT
+      springboot第一个程序及相关注解解释
     </h1>
   
 
@@ -113,11 +113,15 @@
         <div class="article-more-info article-more-info-post hairline">
 
             <div class="article-date">
-  <time datetime="2018-11-20T14:11:14.000Z" itemprop="datePublished">2018-11-20</time>
+  <time datetime="2020-09-03T11:30:37.000Z" itemprop="datePublished">2020-09-03</time>
 </div>
 
             
 
+            
+            <div class="article-tag">
+                <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/springboot/">springboot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
+            </div>
             
 
             
@@ -128,10 +132,46 @@
         </div>
 
         <div class="article-entry post-inner-html hairline" itemprop="articleBody">
-            <p>ZJGSU NB!!!</p>
-<p>324 NB!!!</p>
-<p>LLL LJ!!!</p>
-<p>XD</p>
+            <p>在b站看<a href="https://www.bilibili.com/video/BV1RE411c7RN?p=7" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1RE411c7RN?p=7</a> 这个老师的视频，讲的很好很详细，下面是相关练习内容</p>
+<h4 id="项目约定："><a href="#项目约定：" class="headerlink" title="项目约定："></a>项目约定：</h4><p><img src="//yoursite.com/2020/09/03/s3/p1.png" alt="image-1"><br><a id="more"></a></p>
+<h4 id="我们的项目："><a href="#我们的项目：" class="headerlink" title="我们的项目："></a>我们的项目：</h4><p><img src="//yoursite.com/2020/09/03/s3/p2.png" alt="image-2"></p>
+<h3 id="入口类："><a href="#入口类：" class="headerlink" title="入口类："></a>入口类：</h3><pre><code>package com.adminlll;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.context.annotation.ComponentScan;
+
+
+@EnableAutoConfiguration//作用：开启自动配置 根据引入依赖，如当前spring-boot-starter-web自动判断构建相关环境
+@ComponentScan //作用：用来扫描相关注解 扫描范围：当前入口类所在包及子包 (解耦)
+public class Application {
+    //入口类
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class,args);
+    }
+}
+</code></pre><h3 id="控制器类："><a href="#控制器类：" class="headerlink" title="控制器类："></a>控制器类：</h3><pre><code>package com.adminlll.controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController //=@Controller(实例化当前类为一个控制器) + @ResponseBody(讲当前方法返回值转换为json，响应给浏览器)
+@RequestMapping(&quot;/hello&quot;)//加入访问空间，避免冲突
+public class HelloController {
+
+    @GetMapping(&quot;/hello&quot;)//限定GET 指定访问路径
+    public String hello(){
+        System.out.println(&quot;hello springboot!&quot;);
+        return &quot;hello springboot&quot;;
+    }
+}
+</code></pre><h3 id="application-yml"><a href="#application-yml" class="headerlink" title="application.yml:"></a>application.yml:</h3><pre><code>server:
+  port: 8080 #可修改端口
+  servlet:
+    context-path: /springboot_day1 #指定当前引用在部署到内嵌容器中的项目名
+</code></pre><p>配置文件，可配置该程序相关参数。</p>
+<p><strong>注意注释。</strong></p>
 
         </div>
 
@@ -150,29 +190,25 @@
     
 <nav class="article-nav">
   
-    <a href="/2019/08/31/cp/" id="article-nav-newer" class="article-nav-link-wrap">
-      <div class="article-nav-caption">下一篇</div>
-      <div class="article-nav-title">
-        
-          2019快乐
-        
-      </div>
-    </a>
   
+    <a href="/2020/09/02/s2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-caption">上一篇</div>
+      <div class="article-nav-title">java反射机制</div>
+    </a>
   
 </nav>
 
 
     <section class="share">
         <div class="share-title">分享</div>
-        <a class="share-item" target="_blank" href="https://twitter.com/share?text=TEXT - adminLLL&url=http://yoursite.com/2018/11/20/test/">
+        <a class="share-item" target="_blank" href="https://twitter.com/share?text=springboot第一个程序及相关注解解释 - adminLLL&url=http://yoursite.com/2020/09/03/s3/">
             <box-icon type="logo" name="twitter"></box-icon>
         </a>
-        <a class="share-item" target="_blank" href="https://www.facebook.com/sharer.php?title=TEXT - adminLLL&u=http://yoursite.com/2018/11/20/test/">
+        <a class="share-item" target="_blank" href="https://www.facebook.com/sharer.php?title=springboot第一个程序及相关注解解释 - adminLLL&u=http://yoursite.com/2020/09/03/s3/">
             <box-icon name="facebook-square" type="logo"></box-icon>
         </a>
         <!-- <a class="share-item" target="_blank"
-            href="https://service.weibo.com/share/share.php?title=TEXT - adminLLL&url=http://yoursite.com/2018/11/20/test/&pic=">
+            href="https://service.weibo.com/share/share.php?title=springboot第一个程序及相关注解解释 - adminLLL&url=http://yoursite.com/2020/09/03/s3/&pic=">
             <div class="n-icon n-icon-weibo"></div>
         </a> -->
     </section>
